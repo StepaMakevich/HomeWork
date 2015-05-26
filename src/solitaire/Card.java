@@ -65,7 +65,7 @@ class Card {
                 "7", "8", "9", "10", "J", "Q", "K"};
         // clear rectangle, draw border
         g.clearRect(x, y, width, height);
-        if (isClicked()){
+        if (isClicked()) {
             g.setColor(Color.green);
         } else {
             g.setColor(Color.black);
@@ -116,8 +116,19 @@ class Card {
         }
     }
 
-    private boolean isClicked() {
-        return true == clicked;
+    public int returnNumberCardPile() {
+        for (int i = 0; i < 7; i++) {
+            if (Solitaire.tableau[i].countOfCards() != i + 1) {
+                System.out.println("number of pile =" + (i + 1));
+                return i;
+            }
+        }
+        System.out.println("return 10");
+        return 10;
+    }
+
+    public boolean isClicked() {
+        return clicked;
     }
 
     final boolean isAce() {//превратили метод в вопрос - туз ли это?
@@ -126,5 +137,15 @@ class Card {
 
     final boolean isKing() {//добавили final для запрта переопределния этого метода в классах наследниках
         return getRank() == 12;
+    }
+
+    public CardPile returnCardPile() {
+        for (int i = 0; i < 7; i++) {
+            if (Solitaire.tableau[i].countOfCards() != i + 1) {
+                System.out.println("number of pile =" + (i + 1));
+                return Solitaire.tableau[i];
+            }
+        }
+        return null;
     }
 }

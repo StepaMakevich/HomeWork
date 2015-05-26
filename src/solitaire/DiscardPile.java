@@ -21,7 +21,7 @@ class DiscardPile extends TableAndDiscard {//стопка, в которую с�
             return;
         }
         Card topCard = pop();
-        super.select(topCard,tx,ty);
+        super.select(topCard);
         //сюда можно добавить код переворота карт в новую стопку
         if (Solitaire.deckPile.empty()) {
             while (topCard != null) {

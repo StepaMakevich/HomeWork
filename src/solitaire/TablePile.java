@@ -5,7 +5,9 @@ import java.awt.*;
 /**
  * Created by Степан on 24.03.2015.
  */
-class TablePile extends TableAndDiscard {//это перевернутые стопки раздвинутые как стек - 7 стопок
+class TablePile extends TableAndDiscard {
+    private int Oldx;//это перевернутые стопки раздвинутые как стек - 7 стопок
+    private int Oldy;
 
 
     TablePile(final int x, final int y, final int c) {
@@ -33,7 +35,7 @@ class TablePile extends TableAndDiscard {//это перевернутые ст�
     public boolean includes(final int tx, final int ty) {
         // don't createObject bottom of card
         return x <= tx && tx <= x + Card.width &&
-                (y+(countOfCards(this)-1)* Card.height/2) <= ty && ty<= (y+(countOfCards(this)-1)* Card.height/2 + Card.height);
+                (y+(countOfCards()-1)* Card.height/2) <= ty && ty<= (y+(countOfCards()-1)* Card.height/2 + Card.height);
         // y <= ty && ty <= y + Card.height;
 
     }
@@ -45,7 +47,6 @@ class TablePile extends TableAndDiscard {//это перевернутые ст�
 
         // if face down, then flip
         Card topCard = top();
-        topCard.clicked = true;
         if (!topCard.isFaceUp()) {//если карта лицом вниз, то переворачиваем
             topCard.flip();
             return;
@@ -55,7 +56,7 @@ class TablePile extends TableAndDiscard {//это перевернутые ст�
         //тут мы забираем верхнюю карту и последовательно прикладываем ко всем стопкам с вопросом можешь ли взять?
         //сначала проверяем 4 стопки "бито"
         topCard = pop();
-        super.select(topCard,tx,ty);
+        super.select(topCard);
     }
 
     private int stackDisplay(final Graphics g, final Card aCard) {//рисуем стопку в виде раздвинутого стека

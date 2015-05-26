@@ -43,9 +43,9 @@ class CardPile {//стопка карт
                 y <= ty && ty <= y + Card.height;
     }
 
-    public int countOfCards(final CardPile aCard ) {
+    public int countOfCards() {
         int count = 0;
-        Card temp = aCard.firstCard;
+        Card temp = this.firstCard;
         while (temp != null) {
             temp = temp.link;
             count++;
@@ -75,4 +75,5 @@ class CardPile {//стопка карт
     public boolean canTake(final Card aCard) {
         return false;
     }//это реализация по умолчанию в классе родителя
+
 }

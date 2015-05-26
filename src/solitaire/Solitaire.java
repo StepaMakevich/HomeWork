@@ -44,11 +44,11 @@ public class Solitaire extends Applet {
 
     public boolean mouseDown(final Event evt, final int x, final int y) {
         for (int i = 0; i < 13; i++) {
-            if (allPiles[i].includes(x, y)) {
-                //ждем второго нажатия мыши, то есть надо запомнить координаты предыдущего нажатия
-                xOld = x;
-                yOld = y;
-            }
+//            if (allPiles[i].includes(x, y)) {
+//                //ждем второго нажатия мыши, то есть надо запомнить координаты предыдущего нажатия
+//                xOld = x;
+//                yOld = y;
+//            }
             if (allPiles[i].includes(x, y)) {
                 //тут код прорисовки карты в другой цвет при выборе ее
                 allPiles[i].select(x, y);//если координаты (x,y) в какой-то стопке, то выполняем select()
